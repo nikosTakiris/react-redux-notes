@@ -1,26 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import { HashRouter, Route, Switch } from 'react-router-dom';
+import Header from './components/Header';
+import Home from './components/pages/Home';
+import EventsList from './components/pages/EventsList';
+import Event from './components/pages/Event';
+import Project from './components/pages/Project';
+import ProjectsList from './components/pages/ProjectsList';
+import Sidebar from './components/sidebar/Sidebar';
+import './App.scss';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  render() {
+    return (
+
+      <HashRouter>
+      <Header />
+      <div className="App">
+      <Sidebar />
+
+          <Switch>
+          <Route exact path="/" component={Home}></Route>
+          <Route path="/events" component={EventsList}></Route>
+          <Route path="/projects" component={ProjectsList}></Route>
+          <Route path="/event/:id" component={Event}></Route>
+          <Route path="/project/:id" component={Project}></Route>
+          </Switch>
+
+      </div>
+      </HashRouter>
+
+    );
+  }
 }
 
 export default App;

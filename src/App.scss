@@ -1,0 +1,591 @@
+$colors: (
+  header-bg: #374459,
+  lightgrey-bg: #f9f9f9,
+  just-white: #fff,
+  just-black: #404040,
+  light-black: #606060,
+  dark-grey: #909090,
+  light-green: #0c9,
+  btn-create: #4286f4,
+  btn-create-hover: #2c5699,
+  btn-save: #09c48f,
+  btn-save-hover: #179b76,
+  btn-close: #fc6a82,
+  btn-close-hover: #aa254d,
+  cancel-btn: #c0c0c0,
+  cancel-btn-hover: #909090,
+  transparent-btn: transparent
+);
+
+$bolds: (
+  be-bold: 600
+);
+
+@function getVar ($var-category, $var-name) {
+  @return map-get($var-category, $var-name);
+}
+
+$laptop: 1250px;
+$tablet: 840px;
+$mini_tablet: 470px;
+$middle: 300px;
+$mobile:250px;
+$mini_mobile: 200px;
+
+@mixin laptop {
+  @media (max-width: #{$laptop}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: #{$tablet}) {
+    @content;
+  }
+}
+
+@mixin mini_tablet {
+  @media (max-width: #{$mini_tablet}) {
+    @content;
+  }
+}
+
+@mixin middle {
+  @media (max-width: #{$middle}) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media (max-width: #{$mobile}) {
+    @content;
+  }
+}
+
+@mixin mini_mobile {
+  @media (max-width: #{$mini_mobile}) {
+    @content;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+li {
+  list-style-type: none;
+}
+a {
+  text-decoration: none;
+}
+textarea {
+  resize:none;
+}
+button {
+  border: none;
+  outline:none;
+  cursor:pointer;
+  color: getVar($colors, just-white);
+  font-weight: getVar($bolds, be-bold);
+  transition: 0.8s;
+}
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+.App {
+  clear: both;
+  width: 60%;
+  margin: 20px auto;
+
+  @include laptop {
+    width: 80%;
+  }
+}
+
+.header {
+  width: 100%;
+  background: getVar($colors, header-bg);
+  height: 60px;
+  line-height: 60px;
+
+  @include mobile {
+  height: 120px;
+  line-height: 30px;
+  padding-top: 15px;
+  }
+}
+
+
+.header-inside {
+  width: 60%;
+  margin: 0 auto;
+
+  @include laptop {
+    width: 80%;
+  }
+}
+
+.logo, .navigation {
+  float: left;
+}
+
+.logo {
+
+  h1 {
+    color: getVar($colors, just-white);
+  }
+}
+
+.logo {
+  width: 20%;
+
+  @include mini_tablet {
+    display:none;
+  }
+}
+
+.navigation {
+  width: 75%;
+  margin-left: 5%;
+
+  @include mini_tablet {
+    width: 100%;
+    margin: auto;
+  }
+
+  ul {
+    float: right;
+
+    @include mini_tablet {
+      float: none;
+      text-align: center;
+    }
+  }
+
+  li {
+    display: inline;
+    margin-left: 0.5rem;
+
+    @include mobile {
+      display: block;
+
+    }
+  }
+  a {
+    font-weight: getVar($bolds, be-bold);
+    color: getVar($colors, just-white);
+
+    @include mini_tablet {
+      font-size: 0.9rem;
+    }
+  }
+  a:hover {
+    color:#e9e9e9;
+  }
+}
+.active {
+  border-bottom: 0.1rem solid #fff;
+}
+
+.sidebar {
+  width: 25%;
+  margin-right: 5%;
+  float: left;
+  border: 0.1rem solid #f2f2f2;
+
+  @include tablet {
+    width: 100%;
+  }
+
+  @include mobile {
+    border:none;
+  }
+}
+
+.notifications{
+  padding: 20px;
+
+  @include mobile {
+    padding: 0;
+  }
+
+  .notifications-title p {
+    font-weight: 600;
+    color: getVar($colors, dark-grey);
+    border-bottom: 0.1rem solid #f9f9f9;
+    padding-bottom: 10px;
+
+    @include mobile {
+      font-size: 0.85rem;
+    }
+  }
+
+  .notification-item {
+    color: getVar($colors, dark-grey);
+    margin-top: 10px;
+    font-size: 0.9rem;
+
+    @include mobile {
+      font-size: 0.85rem;
+    }
+  }
+  .notification-item-number {
+    color: getVar($colors, dark-grey);
+    font-size: 0.9rem;
+    font-weight: getVar($bolds, be-bold);
+  }
+  .notification-no-activity {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: getVar($colors, dark-grey);
+  }
+}
+
+/* home */
+.home-title {
+  padding-bottom: 10px;
+  h2 {
+    text-align: center;
+    font-size: 1.3rem;
+    color: #c9c9c9;
+  }
+
+}
+
+.home-e-p-title {
+  text-align: center;
+  margin-top: 0;
+  padding: 10px 0;
+  color: getVar($colors, light-green);
+  font-size: 0.8rem;
+  border-bottom: 1px solid #e9e9e9;
+
+  @include mobile {
+    font-size: 0.75rem;
+  }
+
+}
+
+.home-current-item {
+  text-align: center;
+  padding-top: 10px;
+
+p {
+  cursor:pointer;
+  color: getVar($colors, dark-grey);
+  font-size: 0.95rem;
+
+  @include mobile {
+      font-size: 0.9rem;
+    }
+  }
+  p:hover {
+    color: getVar($colors, just-black);
+  }
+}
+
+/* events - projects */
+.main {
+  width: 70%;
+  float:right;
+
+  @include tablet {
+    width: 100%;
+    margin-top: 20px;
+  }
+}
+
+.event-project-title {
+  width: 100%;
+
+  .title-left {
+    float: left;
+    width: 50%;
+    padding-bottom: 20px;
+
+    @include mini_tablet {
+      width: 100%;
+    }
+
+    p {
+      color: getVar($colors, dark-grey);
+      font-weight: getVar($bolds, be-bold);
+      padding: 10px 0;
+      border-bottom: 1px solid #e9e9e9;
+      font-size: 1.05rem;
+
+      @include mobile {
+        font-size: 0.9rem;
+      }
+    }
+  }
+  .title-right {
+    float: right;
+    width: 50%;
+
+    @include mini_tablet {
+      width: 100%;
+    }
+
+    .create-btn {
+      float: right;
+      padding: 10px;
+      background: getVar($colors, btn-create);
+    }
+    .create-btn:hover {
+      background: getVar($colors, btn-create-hover);
+    }
+    .close-btn {
+      float: right;
+      padding: 10px;
+      background: getVar($colors, btn-close);
+    }
+    .close-btn:hover {
+      background: getVar($colors, btn-close-hover);
+    }
+  }
+
+}
+.event-project-content {
+  clear: both;
+  padding: 20px 0;
+
+  .home-title-secondary {
+    color: getVar($colors, dark-grey);
+    font-weight: getVar($bolds, be-bold);
+    text-align: center;
+
+    @include mobile {
+      font-size: 0.85rem;
+    }
+  }
+
+  .event-project-no-activity {
+    background: getVar($colors, lightgrey-bg);
+    color: getVar($colors, light-green);
+    padding: 20px;
+    margin: 0;
+    text-align: center;
+    font-weight: getVar($bolds, be-bold);
+    font-size: 0.95rem;
+    letter-spacing: 0.005rem;
+  }
+}
+.without {
+  padding: 0;
+}
+.home-event-project-no-activity {
+  margin: 20px 0;
+  background: getVar($colors, lightgrey-bg);
+  color: getVar($colors, light-green);
+  padding: 20px;
+  text-align: center;
+  font-weight: getVar($bolds, be-bold);
+  font-size: 0.95rem;
+  letter-spacing: 0.005rem;
+
+  @include mobile {
+    font-size: 0.85rem;
+  }
+}
+.events-projects {
+  padding: 0 20px;
+}
+.event-project {
+  background: getVar($colors, lightgrey-bg);
+  padding: 20px 20px;
+
+  padding: 20px 0;
+  margin-bottom: 25px;
+  h3 {
+    color: getVar($colors, just-black);
+    display:inline-block;
+    font-size: 1.1rem;
+
+    @include mobile {
+      font-size: 0.95rem;
+    }
+  }
+  h3:hover {
+    color: getVar($colors, light-green);
+  }
+}
+.event-project-description {
+  padding: 5px 0;
+  color: getVar($colors, light-black);
+  font-size: 0.95rem;
+
+  @include mobile {
+    font-size: 0.9rem;
+  }
+}
+.location {
+  color: getVar($colors, dark-grey);
+  font-weight: getVar($bolds, be-bold);
+}
+.edit-btn, .delete-btn {
+  font-size: 0.9rem;
+  color: #c0c0c0;
+  background: getVar($colors, transparent-btn);
+  margin-top: 10px;
+
+  @include mobile {
+    font-size: 0.85rem;
+  }
+}
+.edit-btn:hover, .delete-btn:hover {
+  color: getVar($colors, just-black);
+}
+.delete-btn {
+  margin-left: 0.5rem;
+
+  @include mobile {
+    display:block;
+    margin-top: 5px;
+    margin-left: 0;
+  }
+}
+
+/* forms */
+.create-form {
+  background: getVar($colors, lightgrey-bg);
+  padding: 20px 0;
+
+  h3 {
+    padding-top: 10px;
+    color: getVar($colors, light-green);
+    font-weight: getVar($bolds, be-bold);
+
+    @include mobile {
+      font-size: 1rem;
+    }
+  }
+  .event-project-form {
+    width: 90%;
+    margin: auto;
+  }
+  input {
+    border:none;
+    outline:none;
+    width: 100%;
+    padding: 10px;
+    font-size: 0.85rem;
+    margin: 30px auto;
+    display: block;
+
+    @include mobile {
+    font-size: 0.8rem;
+    }
+  }
+  textarea {
+    width: 100%;
+    margin: auto;
+    height: 300px;
+    font-size: 1.15rem;
+    padding: 10px;
+    border:none;
+    outline:none;
+    display: block;
+
+    @include mini_tablet {
+      height: 150px;
+    }
+
+    @include mobile {
+      height: 100px;
+      font-size: 0.95rem;
+    }
+
+  }
+  .edit-title {
+    height: 40px;
+    margin:30px 0;
+  }
+  .edit-location {
+    margin-top: 30px;
+  }
+  button {
+    background: getVar($colors, btn-save);
+    color: getVar($colors, just-white);
+    font-weight: getVar($bolds, be-bold);
+    padding: 10px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+
+    @include mobile {
+      font-size: 0.8rem;
+    }
+  }
+  button:hover {
+    background: getVar($colors, btn-save-hover);
+  }
+  .cancel-btn {
+    background: getVar($colors, cancel-btn);
+    margin-left: 0.5rem;
+
+    @include mini_mobile {
+      display: block;
+      margin-top: 5px;
+      margin-left: 0;
+    }
+  }
+  .cancel-btn-edit {
+    @include middle {
+      margin-top: 0;
+      margin-left: 0;
+      display:block;
+    }
+  }
+  .cancel-btn:hover {
+    background: getVar($colors, cancel-btn-hover);
+  }
+  /*
+  #warning_event, #warning_project {
+    display: block;
+    color: getVar($colors, btn-close);
+    font-weight: getVar($bolds, be-bold);
+    font-size: 0.9rem;
+    margin-top: 10px;
+  }
+  */
+}
+.warnings {
+  display: block;
+  color: getVar($colors, btn-close);
+  font-weight: getVar($bolds, be-bold);
+  font-size: 0.9rem;
+  margin-top: 10px;
+}
+.edit-form {
+  padding: 0;
+}
+
+/* current event - project */
+.current-event-project {
+  width: 70%;
+  float: right;
+  border-bottom: 1px solid #f0f0f0;
+  padding-bottom: 20px;
+
+  @include tablet {
+    width: 100%;
+    margin-top: 20px;
+  }
+}
+
+.current-event-project-title {
+
+  @include mobile {
+    font-size: 1rem;
+  }
+}
+
+.not-found {
+  text-align: center;
+  color: getVar($colors, light-black);
+}
+
+.back-to p {
+  display: inline-block;
+}
